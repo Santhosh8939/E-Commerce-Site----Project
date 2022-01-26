@@ -21,7 +21,6 @@ class App extends Component{
           <Route path="/shop" element={<ShopPage/>}></Route>
           <Route path="/product" element={<SingleProduct/>}></Route>
           <Route path="/cart" element={<CartPage/>}></Route>
-          <Route path="/checkout" element={<CheckoutPage/>}></Route>
         </Routes>
       </BrowserRouter>
     )

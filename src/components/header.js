@@ -21,7 +21,6 @@ class Header extends Component{
                         <li><NavLink to="/shop">Shop page</NavLink></li>
                         <li><NavLink to="/product">Single product</NavLink></li>
                         <li><NavLink to="/cart">Cart</NavLink></li>
-                        <li><NavLink to="/checkout">Checkout</NavLink></li>
                     </ul>
                 </div>
             </div>
