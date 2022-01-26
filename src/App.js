@@ -1,45 +1,31 @@
-import React, { useEffect, useState } from "react";
-import "./styles.css";
+import React, {Component} from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-function App() {
-  const [users, setUsers] = useState([]);
-  const [click, changeinclick ] = useState(false);
+import HomePage from './pages/home';
+import ShopPage from './pages/shop';
+import SingleProduct from './pages/single-product';
+import CartPage from './pages/cart';
+import CheckoutPage from './pages/checkout';
 
-  useEffect(() =>
-  {
-     getdata();   
-  } ,[]);
+import "./css/bootstrap.min.css";
+import "./css/font-awesome.min.css";
+import "./css/style.css";
+import "./css/responsive.css";
 
-  const clickevent = () =>
-  {
-    changeinclick(!click);
+class App extends Component{
+  render(){
+    return(
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage/>}></Route>
+          <Route path="/shop" element={<ShopPage/>}></Route>
+          <Route path="/product" element={<SingleProduct/>}></Route>
+          <Route path="/cart" element={<CartPage/>}></Route>
+          <Route path="/checkout" element={<CheckoutPage/>}></Route>
+        </Routes>
+      </BrowserRouter>
+    )
   }
-
-  const getdata = async () =>
-  {
-      const response = await fetch("https://reqres.in/api/users?page=1");
-      const content = await response.json();
-      setUsers(content.data);
-  }
-
-  return (
-    <div className="App">
-      <button className="btn" onClick={clickevent}>Get User Data </button>
-      
-      {click && (
-        <div className="box">
-          <h1>USER DETAILS</h1>
-            
-            {users.map((users) => (
-             <div className="data" key={users.id}>
-                <h3>Name : {users.first_name}{users.last_name}</h3>
-                <img src={users.avatar} alt=""></img>
-                <h5>Email : {users.email}</h5>
-              </div>
-              ))}
-        </div>
-      )}    
-    </div>
-  );
 }
+
 export default App;
